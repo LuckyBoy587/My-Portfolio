@@ -1,57 +1,18 @@
 import ContextBox from "./utility/context-box.jsx";
 import PropTypes from "prop-types";
 import TextType from './components/TextType';
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 
 const Navbar = ({ navTabs, selectedIndex, setActiveTabIndex }) => {
-  const [scrollVisible, setScrollVisible] = useState(true);
-  const [hoverVisible, setHoverVisible] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const controlNavbar = () => {
-      if (typeof window !== 'undefined') {
-        const currentScrollY = window.scrollY;
-
-        if (currentScrollY > lastScrollY && currentScrollY > 50) {
-          // Scrolling down
-          setScrollVisible(false);
-          // setIsMenuOpen(false); // Removed to prevent instant collapse on minor scroll adjustments
-        } else {
-          // Scrolling up or at the top
-          setScrollVisible(true);
-        }
-        setLastScrollY(currentScrollY);
-      }
-    };
-
-    const handleMouseMove = (e) => {
-      // Show navbar if mouse is at the very top (e.g., top 15px)
-      setHoverVisible(() => e.clientY < 50);
-      setScrollVisible((prevScrollVisible) => e.clientY < 50 || prevScrollVisible);
-    };
-
-    window.addEventListener('scroll', controlNavbar);
-    window.addEventListener('mousemove', handleMouseMove);
-
-    // Cleanup
-    return () => {
-      window.removeEventListener('scroll', controlNavbar);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, [lastScrollY]);
-
-  const isVisible = scrollVisible || hoverVisible;
 
   return (
     <div
-      onMouseEnter={() => setHoverVisible(true)}
-      onMouseLeave={() => setHoverVisible(false)}
-      className={`relative z-50 flex flex-col h-fit w-full p-2 md:p-4 md:pl-8 rounded-2xl solid-card animate-glow-emergence transition-all duration-500 ease-in-out transform ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-20 opacity-0 pointer-events-none"}`}>
-      <div className={"flex items-center justify-between px-2 md:px-8 text-bright-text h-10 md:h-auto"}>
-        <div className="text-base md:text-xl font-bold heading-font text-secondary-text truncate">
+      className="relative z-50 flex flex-col h-fit w-full p-1.5 md:p-2 md:px-4 rounded-2xl glass-level-2 animate-glow-emergence transition-all duration-300">
+      <div className="flex items-center justify-between px-2 md:px-4 text-bright-text h-10 md:h-12">
+        <div className="text-base md:text-lg font-bold heading-font text-secondary-text truncate">
           <TextType
             text={["@LuckyBoy587"]}
             typingSpeed={75}
@@ -62,11 +23,24 @@ const Navbar = ({ navTabs, selectedIndex, setActiveTabIndex }) => {
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8">
+        <div className="hidden md:flex gap-2 relative items-center">
           {navTabs.map(({ name }, index) => (
-            <p key={index} onClick={() => setActiveTabIndex(index)} className={`cursor-pointer heading-font font-semibold transition-colors duration-200 ${selectedIndex === index ? "text-secondary-text border-b-2 border-secondary-text" : "text-bright-text hover:text-secondary-text"}`}>
+            <button
+              key={index}
+              onClick={() => setActiveTabIndex(index)}
+              className={`relative px-3 py-1.5 cursor-pointer heading-font font-semibold text-xs md:text-sm transition-colors duration-200 z-10 ${
+                selectedIndex === index ? "text-bright-text" : "text-gray-text hover:text-bright-text"
+              }`}
+            >
+              {selectedIndex === index && (
+                <motion.span
+                  layoutId="activeNavTab"
+                  className="absolute inset-0 bg-accent-primary/15 border border-accent-primary/30 rounded-full z-[-1] shadow-[0_0_15px_rgba(168,85,247,0.15)]"
+                  transition={{ type: "spring", stiffness: 380, damping: 22 }}
+                />
+              )}
               {name}
-            </p>
+            </button>
           ))}
         </div>
 
@@ -81,20 +55,28 @@ const Navbar = ({ navTabs, selectedIndex, setActiveTabIndex }) => {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown - Absolute Overlay */}
-      <div className={`md:hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 overflow-hidden transition-all duration-300 ease-in-out solid-card rounded-2xl shadow-2xl ${isMenuOpen ? "max-h-64 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"}`}>
-        <div className="flex flex-col gap-1 p-2 items-center">
+      <div className={`md:hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 overflow-hidden transition-all duration-300 ease-in-out glass-level-2 rounded-2xl shadow-2xl ${isMenuOpen ? "max-h-64 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"}`}>
+        <div className="flex flex-col gap-1 p-2 items-center relative w-full">
           {navTabs.map(({ name }, index) => (
-            <p
+            <button
               key={index}
               onClick={() => {
                 setActiveTabIndex(index);
                 setIsMenuOpen(false);
               }}
-              className={`cursor-pointer heading-font font-semibold w-full text-center py-3 rounded-xl transition-all ${selectedIndex === index ? "text-secondary-text bg-secondary-bg/50" : "text-bright-text hover:bg-secondary-bg/30"}`}
+              className={`relative cursor-pointer heading-font font-semibold w-full text-center py-3 rounded-xl transition-colors duration-200 z-10 ${
+                selectedIndex === index ? "text-bright-text" : "text-gray-text hover:text-bright-text"
+              }`}
             >
+              {selectedIndex === index && (
+                <motion.span
+                  layoutId="activeMobileNavTab"
+                  className="absolute inset-0 bg-accent-primary/15 border border-accent-primary/30 rounded-xl z-[-1] shadow-[0_0_15px_rgba(168,85,247,0.15)]"
+                  transition={{ type: "spring", stiffness: 380, damping: 22 }}
+                />
+              )}
               {name}
-            </p>
+            </button>
           ))}
         </div>
       </div>

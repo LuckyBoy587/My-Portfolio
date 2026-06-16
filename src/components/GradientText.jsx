@@ -1,6 +1,3 @@
-import { useState, useCallback, useEffect, useRef } from 'react';
-import { motion, useMotionValue, useAnimationFrame, useTransform } from 'motion/react';
-
 export default function GradientText({
   children,
   className = '',

@@ -7,11 +7,18 @@ import ContextBox from "./utility/context-box.jsx";
  */
 const SkillBadge = ({ name }) => (
   <motion.span
-    whileHover={{ scale: 1.05, y: -2 }}
+    whileHover={{ 
+      scale: 1.06, 
+      y: -2, 
+      borderColor: "rgba(168, 85, 247, 0.45)", 
+      backgroundColor: "rgba(168, 85, 247, 0.1)", 
+      boxShadow: "0 4px 15px rgba(168, 85, 247, 0.15)" 
+    }}
+    transition={{ type: "spring", stiffness: 300, damping: 18 }}
     initial={{ opacity: 0, scale: 0.9 }}
     whileInView={{ opacity: 1, scale: 1 }}
     viewport={{ once: true }}
-    className="px-3 py-1.5 rounded-lg bg-secondary-bg/40 border border-card-border text-gray-text text-sm hover:text-bright-text hover:border-accent-secondary/40 hover:bg-secondary-bg/60 transition-all duration-300 cursor-default"
+    className="px-3 py-1.5 rounded-lg bg-secondary-bg/40 border border-card-border text-gray-text text-sm hover:text-bright-text transition-colors duration-300 cursor-default"
   >
     {name}
   </motion.span>
@@ -21,7 +28,7 @@ const SkillBadge = ({ name }) => (
  * Timeline icon for individual resume items
  */
 const TimelineIcon = ({ icon }) => (
-  <div className="absolute w-10 h-10 flex items-center justify-center -left-6 -translate-x-1/2 bg-primary-bg text-accent-secondary border border-card-border rounded-xl shadow-lg z-10 transition-all duration-300">
+  <div className="absolute w-10 h-10 flex items-center justify-center -left-6 -translate-x-1/2 bg-primary-bg text-accent-secondary border border-card-border rounded-xl shadow-lg z-10 transition-all duration-300 group-hover:scale-110 group-hover:text-accent-primary group-hover:border-accent-primary/50 group-hover:shadow-[0_0_15px_rgba(168,85,247,0.25)]">
     <i className={icon || "fa-solid fa-circle-dot"}></i>
   </div>
 );
@@ -31,9 +38,9 @@ const TimelineIcon = ({ icon }) => (
  */
 const ResumeSection = ({ icon, title, children }) => (
   <ContextBox>
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full group">
       <div className="flex items-center gap-4 mb-10">
-        <div className="w-12 h-12 flex items-center justify-center bg-secondary-bg border border-card-border rounded-2xl text-accent-secondary text-2xl shadow-inner">
+        <div className="w-12 h-12 flex items-center justify-center bg-secondary-bg/60 border border-card-border rounded-2xl text-accent-secondary text-2xl shadow-[0_0_15px_rgba(99,102,241,0.08)] group-hover:border-accent-secondary/50 group-hover:text-accent-primary transition-all duration-300">
           <i className={icon}></i>
         </div>
         <h2 className="text-3xl font-bold text-bright-text heading-font tracking-tight">{title}</h2>
@@ -56,18 +63,18 @@ const ResumeItem = ({ title, subtitle, date, description, icon, children, delay 
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.4, delay }}
-    className="relative pb-10 last:pb-2 group"
+    className="relative pb-10 last:pb-2 group pl-6 -ml-6 pr-4 rounded-2xl border border-transparent hover:border-card-border/10 hover:bg-secondary-bg/10 transition-all duration-300"
   >
     <TimelineIcon icon={icon} />
-    <div className="flex flex-col gap-2">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+    <div className="flex flex-col gap-2 text-left">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mt-1">
         <h3 className="text-xl font-bold text-bright-text hover:text-accent-secondary transition-colors duration-300">{title}</h3>
-        <span className="text-xs font-semibold uppercase tracking-wider text-accent-secondary bg-accent-secondary/5 border border-accent-secondary/20 px-3 py-1 rounded-full w-fit">
+        <span className="text-[10px] font-bold uppercase tracking-wider text-accent-secondary bg-accent-secondary/10 border border-accent-secondary/35 px-3 py-1 rounded-full w-fit shadow-[0_0_10px_rgba(99,102,241,0.1)]">
           {date}
         </span>
       </div>
       {subtitle && <p className="text-gray-text/90 font-medium text-sm">{subtitle}</p>}
-      {description && <p className="text-gray-text text-sm leading-relaxed max-w-2xl">{description}</p>}
+      {description && <p className="text-gray-text text-sm leading-relaxed max-w-2xl font-light">{description}</p>}
       {children}
     </div>
   </motion.div>
