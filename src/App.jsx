@@ -71,9 +71,9 @@ function App() {
       {/* Animated Theme Toggler */}
       <AnimatedThemeToggler />
 
-      <div className={"flex flex-col gap-16 w-full py-8 relative items-center max-w-5xl"}>
-        {/* Sticky Fixed Navbar */}
-        <div className={"flex w-[95%] md:w-3/4 flex-col gap-4 sticky top-8 z-50"}>
+      <div className={"flex flex-col gap-16 w-full py-8 relative items-center max-w-7xl"}>
+        {/* Fixed Floating Navbar */}
+        <div className={"fixed bottom-4 z-50 left-1/2 -translate-x-1/2 w-fit"}>
           <Navbar navTabs={navTabs} setActiveTabIndex={handleTabClick} selectedIndex={activeTabIndex} />
         </div>
 

@@ -1,34 +1,21 @@
-import ContextBox from "./utility/context-box.jsx";
 import PropTypes from "prop-types";
-import TextType from './components/TextType';
 import { useState } from "react";
 import { motion } from "framer-motion";
-
 
 const Navbar = ({ navTabs, selectedIndex, setActiveTabIndex }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div
-      className="relative z-50 flex flex-col h-fit w-full p-1.5 md:p-2 md:px-4 rounded-2xl glass-level-2 animate-glow-emergence transition-all duration-300">
-      <div className="flex items-center justify-between px-2 md:px-4 text-bright-text h-10 md:h-12">
-        <div className="text-base md:text-lg font-bold heading-font text-secondary-text truncate">
-          <TextType
-            text={["@LuckyBoy587"]}
-            typingSpeed={75}
-            pauseDuration={1500}
-            showCursor={true}
-            cursorCharacter="|"
-          />
-        </div>
-
+      className="relative z-50 flex flex-col h-fit w-full p-1 md:p-1.5 rounded-2xl glass-level-2 animate-glow-emergence transition-all duration-300">
+      <div className="flex items-center justify-center px-1.5 md:px-2 text-bright-text h-9 md:h-10">
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-2 relative items-center">
+        <div className="hidden md:flex gap-1 md:gap-1.5 relative items-center">
           {navTabs.map(({ name }, index) => (
             <button
               key={index}
               onClick={() => setActiveTabIndex(index)}
-              className={`relative px-3 py-1.5 cursor-pointer heading-font font-semibold text-xs md:text-sm transition-colors duration-200 z-10 ${
+              className={`relative px-2.5 py-1 cursor-pointer heading-font font-semibold text-xs md:text-sm transition-colors duration-200 z-10 ${
                 selectedIndex === index ? "text-bright-text" : "text-gray-text hover:text-bright-text"
               }`}
             >
@@ -45,17 +32,18 @@ const Navbar = ({ navTabs, selectedIndex, setActiveTabIndex }) => {
         </div>
 
         {/* Mobile menu button */}
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center justify-center">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-bright-text text-lg focus:outline-none p-2"
+            className="text-bright-text text-lg focus:outline-none p-1.5 cursor-pointer"
           >
             <i className={`fa-solid ${isMenuOpen ? "fa-xmark" : "fa-bars"}`}></i>
           </button>
         </div>
       </div>
 
-      <div className={`md:hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 overflow-hidden transition-all duration-300 ease-in-out glass-level-2 rounded-2xl shadow-2xl ${isMenuOpen ? "max-h-64 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"}`}>
+      {/* Centered Mobile Dropdown (Opens Upwards above bottom navbar) */}
+      <div className={`md:hidden absolute bottom-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 w-48 overflow-hidden transition-all duration-300 ease-in-out glass-level-2 rounded-2xl shadow-2xl ${isMenuOpen ? "max-h-64 opacity-100 translate-y-0" : "max-h-0 opacity-0 translate-y-2 pointer-events-none"}`}>
         <div className="flex flex-col gap-1 p-2 items-center relative w-full">
           {navTabs.map(({ name }, index) => (
             <button
@@ -64,7 +52,7 @@ const Navbar = ({ navTabs, selectedIndex, setActiveTabIndex }) => {
                 setActiveTabIndex(index);
                 setIsMenuOpen(false);
               }}
-              className={`relative cursor-pointer heading-font font-semibold w-full text-center py-3 rounded-xl transition-colors duration-200 z-10 ${
+              className={`relative cursor-pointer heading-font font-semibold w-full text-center py-2.5 rounded-xl transition-colors duration-200 z-10 ${
                 selectedIndex === index ? "text-bright-text" : "text-gray-text hover:text-bright-text"
               }`}
             >
