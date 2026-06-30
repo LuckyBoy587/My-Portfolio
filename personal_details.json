@@ -1,0 +1,212 @@
+{
+  "personal_info": {
+    "name": "Kowshik Baskaran",
+    "role": "Full Stack Developer / B.Tech IT Undergrad",
+    "birthday": "04 May 2006",
+    "interests": [
+      "Coding",
+      "Anime",
+      "Gaming"
+    ],
+    "gaming_interests": [
+      "Genshin Impact",
+      "Minecraft"
+    ],
+    "current_focus": "CP & Full Stack Development"
+  },
+  "contact_details": {
+    "email": "kowshi587@gmail.com",
+    "phone": "8778987449",
+    "location": "Tamil Nadu, India",
+    "city": "Coimbatore",
+    "social_links": {
+      "github": "https://github.com/LuckyBoy587",
+      "linkedin": "https://www.linkedin.com/in/kowshi587/",
+      "instagram": "https://www.instagram.com/luckyboy_587",
+      "twitter_x": "https://x.com/luckyboy_587"
+    }
+  },
+  "education": [
+    {
+      "degree": "B.Tech in Information Technology",
+      "institution": "Sri Krishna College of Engineering and Technology, Coimbatore",
+      "period": "2023 — 2027",
+      "gpa": "8.29 CGPA",
+      "details": "Focusing on software engineering, data structures, and advanced computing. Maintaining a strong academic record."
+    },
+    {
+      "degree": "Senior Secondary (Class XII), CBSE",
+      "institution": "Everest KenBridge Senior Secondary School, Mayiladuthurai",
+      "period": "2022 — 2023",
+      "percentage": "95%",
+      "details": "Completed secondary education with Excellence in Mathematics and Computer Science."
+    },
+    {
+      "degree": "Secondary (Class X), CBSE",
+      "institution": "Everest KenBridge Senior Secondary School, Mayiladuthurai",
+      "period": "2020 — 2021",
+      "percentage": "95%",
+      "details": "Foundational education with consistently high performance across all subjects."
+    }
+  ],
+  "technical_skills": {
+    "languages": [
+      "C++",
+      "Python",
+      "Java",
+      "Kotlin",
+      "HTML5",
+      "CSS3",
+      "JavaScript (ES6+)"
+    ],
+    "frameworks_and_libraries": [
+      "React.js",
+      "Spring Boot",
+      "Tailwind CSS",
+      "Tensorflow",
+      "Keras",
+      "OpenCV",
+      "Framer Motion"
+    ],
+    "infrastructure_and_tools": [
+      "MySQL",
+      "MongoDB",
+      "Git",
+      "Docker",
+      "Vite",
+      "Firebase",
+      "Postman"
+    ]
+  },
+  "achievements": {
+    "competitive_programming": {
+      "leetcode_username": "kowshikb",
+      "solved_problems": "1100+",
+      "status": "Ongoing",
+      "details": "Actively solving complex algorithmic challenges. Successfully solved over 1000+ problems on Leetcode, ranking in the top percentiles."
+    },
+    "portfolio_development": {
+      "total_projects": "20+ active",
+      "period": "2023 — Present",
+      "details": "Developed and deployed 20+ diverse projects ranging from web applications and AI models to cross-platform mobile apps."
+    }
+  },
+  "projects": [
+    {
+      "title": "Music Player App",
+      "category": "Mobile",
+      "description": "A fully functional offline music player built using Kotlin and XML with media controls and playlist support.",
+      "tech": [
+        "Kotlin",
+        "XML",
+        "Android Studio"
+      ],
+      "github": "https://github.com/LuckyBoy587/Music-Player-In-Kotlin",
+      "live_url": ""
+    },
+    {
+      "title": "Chatbot with Keras",
+      "category": "AI/ML",
+      "description": "A simple chatbot built using deep learning (Keras and TensorFlow) that handles basic queries.",
+      "tech": [
+        "Python",
+        "Keras",
+        "TensorFlow",
+        "NumPy"
+      ],
+      "github": "https://github.com/LuckyBoy587/ChatBot-for-LMS",
+      "live_url": ""
+    },
+    {
+      "title": "Code Tracker Hub",
+      "category": "Web Dev",
+      "description": "A centralized dashboard that integrates coding platform progress like LeetCode, GeeksForGeeks, and more, giving users an overview of their coding journey.",
+      "tech": [
+        "React",
+        "REST API",
+        "Selenium",
+        "GraphQL"
+      ],
+      "github": "https://github.com/LuckyBoy587/Code-Tracker-Hub",
+      "live_url": ""
+    },
+    {
+      "title": "CarPoolingSystem",
+      "category": "Web Dev",
+      "description": "A backend service for organizing carpool rides, enabling users to register, manage vehicles, and coordinate ride-sharing efficiently and securely.",
+      "tech": [
+        "Spring Boot",
+        "Spring Data JPA",
+        "Java",
+        "REST API"
+      ],
+      "github": "https://github.com/LuckyBoy587/CarPoolingSystem",
+      "live_url": ""
+    },
+    {
+      "title": "Chess-AI",
+      "category": "AI/ML",
+      "description": "A graphical chess game implemented using Pygame, featuring an AI opponent that utilizes alpha-beta pruning to evaluate possible moves and select the best one, providing interactive play against the computer with move validation and game logic.",
+      "tech": [
+        "Python",
+        "Pygame",
+        "Alpha-Beta Pruning",
+        "Minimax Algorithm"
+      ],
+      "github": "https://github.com/LuckyBoy587/Chess-Pygame",
+      "live_url": ""
+    },
+    {
+      "title": "Tetris-Java",
+      "category": "Game Dev",
+      "description": "A classic Tetris game implemented in Java, providing smooth gameplay, intuitive controls, and traditional Tetris mechanics. The project features a graphical interface for interactive play, score tracking, and increasing difficulty levels as the game progresses.",
+      "tech": [
+        "Java",
+        "Swing",
+        "Game Development",
+        "Object-Oriented Programming"
+      ],
+      "github": "https://github.com/LuckyBoy587/Tetris-Java",
+      "live_url": ""
+    },
+    {
+      "title": "TODO-Web-App",
+      "category": "Web Dev",
+      "description": "A web-based task management application that allows users to create, edit, and organize their to-do lists. The app provides functionalities such as adding new tasks, marking tasks as completed, editing existing items, and deleting tasks, offering a simple and interactive interface for personal productivity.",
+      "tech": [
+        "ReactJS",
+        "JavaScript",
+        "CSS",
+        "Web App"
+      ],
+      "github": "https://github.com/LuckyBoy587/TODO-Web-App",
+      "live_url": "https://luckyboy587.github.io/TODO-Web-App/"
+    },
+    {
+      "title": "AI Coding Platform",
+      "category": "Web Dev",
+      "description": "Built AI-Coding-Platform, an interactive web app for AI-enhanced coding challenges with real-time feedback and progress tracking",
+      "tech": [
+        "React",
+        "Node.js",
+        "Express",
+        "Docker",
+        "Heroku"
+      ],
+      "github": "https://github.com/LuckyBoy587/AI-Coding-Platform",
+      "live_url": "https://luckyboy587.github.io/AI-Coding-Platform/"
+    },
+    {
+      "title": "Leetcode Helper Extension",
+      "category": "Web Dev",
+      "description": "Developed a Chrome extension that provides hints and solutions for Leetcode problems, enhancing user experience and learning efficiency.",
+      "tech": [
+        "JavaScript",
+        "Chrome Extension API",
+        "ReactJS"
+      ],
+      "github": "https://github.com/LuckyBoy587/Leetcode-Helper-Extension",
+      "live_url": ""
+    }
+  ]
+}

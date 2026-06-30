@@ -1,0 +1,5 @@
+{
+    "nodejs.typescript.rebuildOnChanges": false,
+    "editor.formatOnSave": true,
+    "prettier.mode": "Auto"
+}
