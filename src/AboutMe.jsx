@@ -1,31 +1,8 @@
-import { motion } from "framer-motion";
 import ContextBox from "./utility/context-box.jsx";
 import ShinyText from "./components/ShinyText.jsx";
 import Branding from "./Branding.jsx";
 
 const AboutMe = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 10, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
-  };
-
   return (
     <div className={"flex flex-col gap-8 min-w-[min(600px, 100vw)] blur-fade-in origin-top"}>
       <Branding />
@@ -112,11 +89,7 @@ const AboutMe = () => {
           </div>
         </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+        <div
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4"
         >
           {[
@@ -130,17 +103,13 @@ const AboutMe = () => {
             { icon: "fa-solid fa-database", label: "MongoDB", color: "#47a248" },
             { icon: "fa-solid fa-wind", label: "Tailwind CSS", color: "#06b6d4" },
           ].map(({ icon, label, color }) => (
-            <motion.div
+            <div
               key={label}
-              variants={itemVariants}
-              whileHover={{ 
-                y: -6, 
-                borderColor: `${color}60`, 
-                backgroundColor: `${color}10`,
-                boxShadow: `0 10px 30px -10px ${color}40`
+              className="group relative cursor-default p-4 flex flex-col items-center justify-center gap-3 rounded-2xl bg-secondary-bg/20 border border-card-border/40 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-[var(--hover-color)]/60 hover:bg-[var(--hover-color)]/10 hover:[box-shadow:0_10px_30px_-10px_var(--hover-shadow-color)]"
+              style={{
+                '--hover-color': color,
+                '--hover-shadow-color': `${color}40`,
               }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="relative group p-4 flex flex-col items-center justify-center gap-3 rounded-2xl bg-secondary-bg/20 border border-card-border/40 cursor-default"
             >
               <div
                 className="w-12 h-12 flex items-center justify-center text-3xl transition-transform duration-300 group-hover:scale-110"
@@ -149,9 +118,9 @@ const AboutMe = () => {
                 <i className={icon}></i>
               </div>
               <p className="text-sm font-medium text-gray-text group-hover:text-bright-text transition-colors duration-300">{label}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </ContextBox>
     </div>
   );
