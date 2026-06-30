@@ -304,6 +304,16 @@ h6,
     --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
     --shadow-glass-deep: 0 16px 48px 0 rgba(0, 0, 0, 0.15);
 
+    /* Dev Profile Light */
+    --dev-profile-bg: #f9fafb;
+    --dev-profile-border: #e5e7eb;
+    --dev-profile-header-bg: #f3f4f6;
+    --syntax-key: #2563eb;
+    --syntax-string: #ca8a04;
+    --syntax-number: #9333ea;
+    --syntax-punctuation: #db2777;
+    --syntax-default: #1f2937;
+
     /* Common */
     --blur-glass-1: 8px;
     --blur-glass-2: 16px;
@@ -371,6 +381,16 @@ h6,
     
     --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     --shadow-glass-deep: 0 16px 48px 0 rgba(0, 0, 0, 0.35);
+
+    /* Dev Profile Dark */
+    --dev-profile-bg: rgba(0, 0, 0, 0.45);
+    --dev-profile-border: rgba(255, 255, 255, 0.1);
+    --dev-profile-header-bg: rgba(255, 255, 255, 0.05);
+    --syntax-key: #8be9fd;
+    --syntax-string: #f1fa8c;
+    --syntax-number: #bd93f9;
+    --syntax-punctuation: #ff79c6;
+    --syntax-default: #f8f8f2;
 }
 
 .light {
@@ -380,35 +400,21 @@ h6,
 @layer components {
     /* Default (Light) Styles */
     .dev-profile-window {
-        background-color: #f9fafb;
-        border: 1px solid #e5e7eb;
+        background-color: var(--dev-profile-bg);
+        border: 1px solid var(--dev-profile-border);
     }
     .dev-profile-window-header {
-        background-color: #f3f4f6;
-        border-bottom: 1px solid #e5e7eb;
+        background-color: var(--dev-profile-header-bg);
+        border-bottom: 1px solid var(--dev-profile-border);
     }
 
-    .syntax-key { color: #2563eb; } /* blue-600 */
-    .syntax-string { color: #ca8a04; } /* yellow-600 */
-    .syntax-number { color: #9333ea; } /* purple-600 */
-    .syntax-punctuation { color: #db2777; } /* pink-600 */
-    .syntax-default {color: #1f2937;}
+    .syntax-key { color: var(--syntax-key); }
+    .syntax-string { color: var(--syntax-string); }
+    .syntax-number { color: var(--syntax-number); }
+    .syntax-punctuation { color: var(--syntax-punctuation); }
+    .syntax-default {color: var(--syntax-default);}
 
-    /* Dark Theme Overrides */
-    .dark .dev-profile-window {
-        background-color: rgba(0, 0, 0, 0.45);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .dark .dev-profile-window-header {
-        background-color: rgba(255, 255, 255, 0.05);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .dark .syntax-key { color: #8be9fd; }
-    .dark .syntax-string { color: #f1fa8c; }
-    .dark .syntax-number { color: #bd93f9; }
-    .dark .syntax-punctuation { color: #ff79c6; }
-    .dark .syntax-default {color: #f8f8f2;}
+    /* Dark Theme Overrides are now handled by the variables */
 }
 
 @layer base {

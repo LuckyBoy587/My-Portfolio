@@ -14,7 +14,7 @@ const getSkillInfo = (name) => {
     "HTML5": { icon: "fa-brands fa-html5", color: "#E34F26" },
     "CSS3": { icon: "fa-brands fa-css3-alt", color: "#1572B6" },
     "JavaScript (ES6+)": { icon: "fa-brands fa-js", color: "#F7DF1E" },
-    
+
     // Frameworks & Libraries
     "React.js": { icon: "fa-brands fa-react", color: "#61DAFB" },
     "Spring Boot": { icon: "fa-solid fa-leaf", color: "#6DB33F" },
@@ -23,7 +23,7 @@ const getSkillInfo = (name) => {
     "Keras": { icon: "fa-solid fa-gears", color: "#D00000" },
     "OpenCV": { icon: "fa-solid fa-eye", color: "#5C3EE8" },
     "Framer Motion": { icon: "fa-solid fa-wand-magic-sparkles", color: "#F024B6" },
-    
+
     // Infrastructure & Tools
     "MySQL": { icon: "fa-solid fa-database", color: "#4479A1" },
     "MongoDB": { icon: "fa-solid fa-database", color: "#47A248" },
@@ -38,14 +38,14 @@ const getSkillInfo = (name) => {
 
 const SkillBadge = ({ name, icon, brandColor }) => {
   const [isHovered, setIsHovered] = React.useState(false);
-  
+
   return (
     <motion.span
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      whileHover={{ 
-        scale: 1.05, 
-        y: -2, 
+      whileHover={{
+        scale: 1.05,
+        y: -2,
       }}
       transition={{ type: "spring", stiffness: 300, damping: 18 }}
       initial={{ opacity: 0, scale: 0.9 }}
@@ -58,8 +58,8 @@ const SkillBadge = ({ name, icon, brandColor }) => {
         boxShadow: `0 4px 15px -2px ${brandColor}25`
       } : {}}
     >
-      <i 
-        className={cn(icon, "text-xs sm:text-sm transition-colors duration-300")} 
+      <i
+        className={cn(icon, "text-xs sm:text-sm transition-colors duration-300")}
         style={isHovered ? { color: brandColor } : { color: 'var(--accent-secondary)' }}
       />
       <span className="font-mono text-xs sm:text-sm">{name}</span>
@@ -69,7 +69,7 @@ const SkillBadge = ({ name, icon, brandColor }) => {
 
 const TimelineItem = ({ title, subtitle, date, description, extra, icon, delay }) => {
   const [isHovered, setIsHovered] = React.useState(false);
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -82,12 +82,12 @@ const TimelineItem = ({ title, subtitle, date, description, extra, icon, delay }
     >
       {/* Timeline Line Connector */}
       <div className="absolute left-[9px] top-4 bottom-0 w-[2px] bg-linear-to-b from-card-border/60 via-card-border/10 to-transparent group-last:hidden" />
-      
+
       {/* Pulsing Node */}
       <div className="absolute left-0 top-2 w-5 h-5 flex items-center justify-center">
         <div className={cn(
           "w-3 h-3 rounded-full bg-primary-bg border-2 transition-all duration-300 z-10",
-          isHovered 
+          isHovered
             ? "border-accent-primary scale-125 shadow-[0_0_10px_#a855f7]"
             : "border-accent-secondary"
         )} />
@@ -95,12 +95,12 @@ const TimelineItem = ({ title, subtitle, date, description, extra, icon, delay }
           <span className="absolute w-5 h-5 rounded-full bg-accent-primary/25 animate-ping z-0" />
         )}
       </div>
-      
+
       {/* Content Box */}
       <div className={cn(
         "p-6 rounded-2xl border bg-[var(--secondary-bg-10)] transition-all duration-300",
-        isHovered 
-          ? "border-accent-primary/30 bg-secondary-bg/25 shadow-[0_4px_20px_rgba(168,85,247,0.06)] translate-x-1" 
+        isHovered
+          ? "border-accent-primary/30 bg-secondary-bg/25 shadow-[0_4px_20px_rgba(168,85,247,0.06)] translate-x-1"
           : "border-card-border/30"
       )}>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
@@ -112,7 +112,7 @@ const TimelineItem = ({ title, subtitle, date, description, extra, icon, delay }
             <span className="font-mono text-xs tracking-wider uppercase opacity-80">SYS_NODE</span>
           </div>
         </div>
-        
+
         <h3 className={cn(
           "text-xl font-bold transition-colors duration-300 heading-font",
           isHovered ? "text-accent-primary" : "text-bright-text"
@@ -121,9 +121,9 @@ const TimelineItem = ({ title, subtitle, date, description, extra, icon, delay }
         </h3>
         <p className="text-gray-text text-sm font-semibold mt-1 mb-3">{subtitle}</p>
         <p className="text-gray-text/85 text-sm leading-relaxed font-light mb-4">{description}</p>
-        
+
         {extra && (
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-black/20 border border-card-border/10 rounded-lg max-w-fit font-mono text-xs">
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-[var(--dev-profile-header-bg)] border border-card-border/10 rounded-lg max-w-fit font-mono text-xs">
             <span className="text-accent-secondary font-bold">RETURN_CODE</span>
             <span className="text-gray-text/50">=</span>
             <span className="text-bright-text font-bold">{extra}</span>
@@ -136,7 +136,7 @@ const TimelineItem = ({ title, subtitle, date, description, extra, icon, delay }
 
 const AchievementCard = ({ title, date, description, icon, command, outputLines, delay }) => {
   const [isHovered, setIsHovered] = React.useState(false);
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
@@ -147,13 +147,13 @@ const AchievementCard = ({ title, date, description, icon, command, outputLines,
       onMouseLeave={() => setIsHovered(false)}
       className={cn(
         "p-6 rounded-2xl border bg-secondary-bg/15 text-left transition-all duration-300 flex flex-col gap-4 relative overflow-hidden group",
-        isHovered 
-          ? "border-accent-secondary/40 bg-secondary-bg/25 shadow-[0_4px_25px_rgba(99,102,241,0.06)] -translate-y-1" 
+        isHovered
+          ? "border-accent-secondary/40 bg-secondary-bg/25 shadow-[0_4px_25px_rgba(99,102,241,0.06)] -translate-y-1"
           : "border-card-border/30"
       )}
     >
       <div className="absolute right-0 top-0 w-24 h-24 bg-accent-secondary/5 rounded-full blur-2xl pointer-events-none group-hover:bg-accent-primary/10 transition-all duration-500" />
-      
+
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center gap-3">
           <div className={cn(
@@ -168,25 +168,40 @@ const AchievementCard = ({ title, date, description, icon, command, outputLines,
           </div>
         </div>
       </div>
-      
+
       <p className="text-gray-text text-sm leading-relaxed font-light">{description}</p>
-      
-      <div className="bg-black/35 border border-white/5 rounded-xl p-3.5 font-mono text-xs leading-relaxed text-left">
-        <div className="flex items-center gap-1.5 text-gray-text/45 border-b border-white/5 pb-1.5 mb-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-red-400/60" />
-          <span className="w-1.5 h-1.5 rounded-full bg-yellow-400/60" />
-          <span className="w-1.5 h-1.5 rounded-full bg-green-400/60" />
-          <span className="ml-1 text-[10px] opacity-75">console.sh</span>
-        </div>
-        <div className="flex gap-1.5 text-accent-secondary text-xs">
-          <span>$</span>
-          <span className="text-bright-text">{command}</span>
-        </div>
-        {outputLines.map((line, idx) => (
-          <div key={idx} className="text-gray-text/80 pl-3 mt-0.5 text-xs">
-            {line}
+
+      <div className="md:col-span-5 w-full flex justify-center">
+        <div className="w-full max-w-[340px] rounded-xl shadow-2xl overflow-hidden font-mono text-xs text-left dev-profile-window">
+          <div className='flex items-center justify-between px-4 py-2.5 dev-profile-window-header'>
+            <div className="flex gap-1.5">
+              <span className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+              <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+              <span className="w-3 h-3 rounded-full bg-[#27c93f]" />
+            </div>
+            <span className="text-gray-text text-[10px] opacity-80">console.sh</span>
+            <span className="w-10" />
           </div>
-        ))}
+          <div className="p-4">
+            <div className="flex gap-1.5 text-accent-secondary text-xs">
+              <span>$</span>
+              <span className="text-bright-text">{command}</span>
+            </div>
+            {/*<div>*/}
+            {/*  <span className="syntax-punctuation">{`{`}</span>*/}
+            {/*</div>*/}
+            {outputLines.map((pair, idx) => (
+              <div key={idx} className="text-gray-text/80 pl-3 mt-0.5 text-xs">
+                <div className="pl-4">
+                  <span className="syntax-key">{pair.key}</span>: <span className="syntax-string">{pair.value}</span>
+                </div>
+              </div>
+            ))}
+            {/*<div>*/}
+            {/*  <span className="syntax-punctuation">{`}`}</span>*/}
+            {/*</div>*/}
+          </div>
+        </div>
       </div>
     </motion.div>
   );
@@ -214,7 +229,7 @@ const SkillTerminal = ({ title, icon, skills, delay }) => {
           <span className="w-1.5 h-1.5 rounded-full bg-white/15" />
         </div>
       </div>
-      
+
       <div className="p-4 flex flex-wrap gap-2 text-left bg-[var(--primary-bg)] min-h-[140px] align-content-start">
         {skills.map((skill) => {
           const info = getSkillInfo(skill);
@@ -234,7 +249,7 @@ const Resume = () => {
   const handleCompileAndPrint = () => {
     setIsCompiling(true);
     setCompileProgress(0);
-    
+
     const interval = setInterval(() => {
       setCompileProgress((prev) => {
         if (prev >= 100) {
@@ -303,9 +318,9 @@ const Resume = () => {
       description: "Actively solving complex algorithmic challenges. Successfully solved over 1000+ problems on Leetcode, ranking in the top percentiles.",
       command: "leetcode --user kowshikb --solved",
       outputLines: [
-        "> Node count: 1000+ solved",
-        "> Rank: Top percentiles",
-        "> Algorithms: Graphs, Dynamic Prog, Trees"
+        { key: "Problems Solved", value: "1000+" },
+        { key: "Rank", value: "Top Percentiles" },
+        { key: "Specialization", value: "Graphs, Dynamic Programming, Trees" }
       ]
     },
     {
@@ -315,9 +330,9 @@ const Resume = () => {
       description: "Developed and deployed 20+ diverse projects ranging from web applications and AI models to cross-platform mobile apps.",
       command: "git status --porcelain",
       outputLines: [
-        "> Total projects: 20+ active",
-        "> Deploy status: Build successful",
-        "> Target: Web, Android, AI Modules"
+        { key: "Total Projects", value: "20+ Active" },
+        { key: "Deploy Status", value: "Build Successful" },
+        { key: "Target", value: "Web, Android, AI Modules" }
       ]
     },
   ];
@@ -341,13 +356,13 @@ const Resume = () => {
               </h2>
             </div>
           </div>
-          
+
           <button
             onClick={handleCompileAndPrint}
             disabled={isCompiling}
             className={cn(
               "relative overflow-hidden flex items-center gap-3 px-5 py-2.5 rounded-xl border font-bold text-sm uppercase tracking-widest font-mono transition-all duration-300",
-              isCompiling 
+              isCompiling
                 ? "bg-accent-primary/10 border-accent-primary/45 text-accent-primary cursor-wait"
                 : "bg-secondary-bg/50 border-card-border hover:border-accent-primary/50 text-gray-text hover:text-bright-text hover:shadow-[0_0_15px_rgba(168,85,247,0.15)] cursor-pointer"
             )}
@@ -365,7 +380,7 @@ const Resume = () => {
             )}
           </button>
         </div>
-        
+
         {/* Profile mini status panel */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full text-left font-mono text-xs text-gray-text">
           <div className="flex flex-col gap-1">
@@ -389,7 +404,7 @@ const Resume = () => {
           </div>
         </div>
       </ContextBox>
-      
+
       {/* 2-Column Grid for Education & Achievements */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full">
         {/* Left Side: Education Timeline */}
@@ -404,7 +419,7 @@ const Resume = () => {
                 <p className="text-xs font-mono text-gray-text/70 mt-0.5">cat ~/education.log</p>
               </div>
             </div>
-            
+
             <div className="flex flex-col gap-1">
               {education.map((item, index) => (
                 <TimelineItem
@@ -429,7 +444,7 @@ const Resume = () => {
                 <p className="text-xs font-mono text-gray-text/70 mt-0.5">cat ~/achievements.cfg</p>
               </div>
             </div>
-            
+
             <div className="flex flex-col gap-6">
               {achievements.map((item, index) => (
                 <AchievementCard
@@ -454,7 +469,7 @@ const Resume = () => {
             <p className="text-xs font-mono text-gray-text/70 mt-0.5">env | grep SYSTEM_SKILLS</p>
           </div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
           {technicalSkills.map((category, index) => (
             <SkillTerminal
