@@ -12,15 +12,14 @@ const Navbar = ({ navTabs, selectedIndex, setActiveTabIndex }) => {
             <button
               key={index}
               onClick={() => setActiveTabIndex(index)}
-              className={`relative px-2 sm:px-2.5 py-1 cursor-pointer heading-font font-semibold text-[11px] sm:text-xs md:text-sm transition-colors duration-200 z-10 ${
-                selectedIndex === index ? "text-bright-text" : "text-gray-text hover:text-bright-text"
-              }`}
+              className={`relative px-2 sm:px-2.5 py-1 cursor-pointer heading-font font-semibold text-[11px] sm:text-xs md:text-sm transition-colors duration-200 z-10 ${selectedIndex === index ? "text-bright-text" : "text-gray-text hover:text-bright-text"
+                }`}
             >
               {selectedIndex === index && (
                 <motion.span
                   layoutId="activeNavTab"
                   className="absolute inset-0 bg-accent-primary/15 border border-accent-primary/30 rounded-full z-[-1] shadow-[0_0_15px_rgba(168,85,247,0.15)]"
-                  transition={{ type: "spring", stiffness: 380, damping: 22 }}
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
               {name}
