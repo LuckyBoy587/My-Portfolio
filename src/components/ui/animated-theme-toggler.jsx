@@ -7,12 +7,14 @@ export const AnimatedThemeToggler = ({
   className,
   ...props
 }) => {
-  const [isLight, setIsLight] = useState(false)
+  const [isDark, setIsDark] = useState(false)
   const buttonRef = useRef(null)
 
   useEffect(() => {
     const updateTheme = () => {
-      setIsLight(document.documentElement.classList.contains("light"))
+      const isDark = document.documentElement.classList.contains("dark")
+      setIsDark(isDark)
+      localStorage.setItem("theme", isDark ? "dark" : "light");
     }
 
     updateTheme()
@@ -23,17 +25,26 @@ export const AnimatedThemeToggler = ({
       attributeFilter: ["class"],
     })
 
+    // Also check for saved theme preference
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark");
+    } else if (localStorage.getItem("theme") === "light") {
+      document.documentElement.classList.remove("dark");
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.documentElement.classList.add("dark");
+    }
+
     return () => observer.disconnect();
   }, [])
 
   const toggleTheme = useCallback(async () => {
     if (!buttonRef.current) return
 
-    const newLightState = !isLight
-    setIsLight(newLightState)
-    document.documentElement.classList.toggle("light")
-    localStorage.setItem("theme", newLightState ? "light" : "dark")
-  }, [isLight])
+    const newDarkState = !isDark
+    setIsDark(newDarkState)
+    document.documentElement.classList.toggle("dark")
+    localStorage.setItem("theme", newDarkState ? "dark" : "light")
+  }, [isDark])
 
   return (
     <button
@@ -41,7 +52,7 @@ export const AnimatedThemeToggler = ({
       onClick={toggleTheme}
       className={cn("fixed top-3 right-3 z-50 p-3 rounded-full glass-level-3 hover:scale-110 transition-all duration-300", className)}
       {...props}>
-      {isLight ? <Moon className="w-6 h-6 text-[#1e1b4b]" /> : <Sun className="w-6 h-6 text-yellow-400" />}
+      {isDark ? <Sun className="w-6 h-6 text-yellow-400" /> : <Moon className="w-6 h-6 text-[#1e1b4b]" />}
       <span className="sr-only">Toggle theme</span>
     </button>
   );

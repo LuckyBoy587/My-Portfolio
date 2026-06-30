@@ -51,7 +51,7 @@ const SkillBadge = ({ name, icon, brandColor }) => {
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      className="relative flex items-center gap-2 px-3 py-1.5 rounded-xl bg-secondary-bg/30 border border-card-border/40 text-gray-text text-sm font-semibold hover:text-bright-text transition-all duration-300 cursor-default overflow-hidden group"
+      className="relative flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[var(--secondary-bg-30)] border border-card-border/40 text-gray-text text-sm font-semibold hover:text-bright-text transition-all duration-300 cursor-default overflow-hidden group"
       style={isHovered ? {
         borderColor: `${brandColor}50`,
         backgroundColor: `${brandColor}08`,
@@ -98,7 +98,7 @@ const TimelineItem = ({ title, subtitle, date, description, extra, icon, delay }
       
       {/* Content Box */}
       <div className={cn(
-        "p-6 rounded-2xl border bg-secondary-bg/10 transition-all duration-300",
+        "p-6 rounded-2xl border bg-[var(--secondary-bg-10)] transition-all duration-300",
         isHovered 
           ? "border-accent-primary/30 bg-secondary-bg/25 shadow-[0_4px_20px_rgba(168,85,247,0.06)] translate-x-1" 
           : "border-card-border/30"
@@ -199,9 +199,9 @@ const SkillTerminal = ({ title, icon, skills, delay }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className="flex flex-col rounded-2xl border border-card-border/30 bg-secondary-bg/10 overflow-hidden shadow-lg hover:border-card-border/50 transition-all duration-300"
+      className="flex flex-col rounded-2xl border border-card-border/30 bg-[var(--secondary-bg-10)] overflow-hidden shadow-lg hover:border-card-border/50 transition-all duration-300"
     >
-      <div className="flex items-center justify-between px-4 py-3 bg-secondary-bg/30 border-b border-card-border/20">
+      <div className="flex items-center justify-between px-4 py-3 bg-[var(--secondary-bg-30)] border-b border-card-border/20">
         <div className="flex items-center gap-2">
           <i className={cn(icon, "text-accent-secondary text-sm")}></i>
           <span className="text-xs font-bold text-gray-text uppercase tracking-widest font-mono">
@@ -215,7 +215,7 @@ const SkillTerminal = ({ title, icon, skills, delay }) => {
         </div>
       </div>
       
-      <div className="p-4 flex flex-wrap gap-2 text-left bg-black/10 min-h-[140px] align-content-start">
+      <div className="p-4 flex flex-wrap gap-2 text-left bg-[var(--primary-bg)] min-h-[140px] align-content-start">
         {skills.map((skill) => {
           const info = getSkillInfo(skill);
           return (

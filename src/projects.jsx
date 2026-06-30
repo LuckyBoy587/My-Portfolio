@@ -104,7 +104,7 @@ function Projects() {
   }
 
   return (
-    <div className="px-4 text-white">
+    <div className="px-4">
       {/* Filter Bar */}
       <div className="flex flex-wrap justify-center gap-3 mb-8">
         {categories.map((category) => (
@@ -117,7 +117,7 @@ function Projects() {
               border backdrop-blur-sm
               ${activeCategory === category
                 ? "bg-accent-primary/90 border-accent-primary text-white shadow-lg shadow-accent-primary/25"
-                : "bg-card-bg/50 border-white/10 text-gray-text hover:border-accent-primary/50 hover:text-bright-text hover:bg-card-bg/80"
+                : "bg-[var(--card-bg)]/50 border-white/10 text-gray-text hover:border-accent-primary/50 hover:text-bright-text hover:bg-[var(--card-bg)]/80"
               }
             `}
             whileHover={{ scale: 1.05 }}
@@ -145,7 +145,7 @@ function Projects() {
                 key={project.title}
                 variants={cardVariants}
                 layout
-                className="flex flex-col rounded-2xl bg-card-bg glass-card overflow-hidden shadow-lg"
+                className="flex flex-col rounded-2xl bg-[var(--card-bg)] glass-card overflow-hidden shadow-lg"
               >
                 {/* Image Section */}
                 <div className="w-full aspect-video overflow-hidden relative">
@@ -155,7 +155,7 @@ function Projects() {
                     className="w-full h-full object-cover"
                   />
                   {/* Category Badge */}
-                  <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold bg-card-bg border border-card-border text-bright-text">
+                  <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold bg-[var(--card-bg)] border border-card-border text-bright-text">
                     {project.category}
                   </span>
                 </div>

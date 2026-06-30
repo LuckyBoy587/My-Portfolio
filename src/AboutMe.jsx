@@ -57,9 +57,9 @@ const AboutMe = () => {
 
           {/* Interactive macOS code window */}
           <div className="md:col-span-5 w-full flex justify-center">
-            <div className="w-full max-w-[340px] rounded-xl border border-white/10 bg-black/45 shadow-2xl overflow-hidden font-mono text-xs text-left">
+            <div className="w-full max-w-[340px] rounded-xl shadow-2xl overflow-hidden font-mono text-xs text-left dev-profile-window">
               {/* Window Header */}
-              <div className="flex items-center justify-between px-4 py-2.5 bg-white/5 border-b border-white/5">
+              <div className="flex items-center justify-between px-4 py-2.5 dev-profile-window-header">
                 <div className="flex gap-1.5">
                   <span className="w-3 h-3 rounded-full bg-[#ff5f56]" />
                   <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
@@ -69,29 +69,29 @@ const AboutMe = () => {
                 <span className="w-10" />
               </div>
               {/* Code Content */}
-              <div className="p-4 leading-relaxed overflow-x-auto text-[11px] text-[#f8f8f2]">
+              <div className="p-4 leading-relaxed overflow-x-auto text-[11px] syntax-default">
                 <div>
-                  <span className="text-[#ff79c6]">{`{`}</span>
+                  <span className="syntax-punctuation">{`{`}</span>
                 </div>
                 <div className="pl-4">
-                  <span className="text-[#8be9fd]">"name"</span>: <span className="text-[#f1fa8c]">"Kowshik Baskaran"</span>,
+                  <span className="syntax-key">"name"</span>: <span className="syntax-string">"Kowshik Baskaran"</span>,
                 </div>
                 <div className="pl-4">
-                  <span className="text-[#8be9fd]">"role"</span>: <span className="text-[#f1fa8c]">"Full Stack Developer"</span>,
+                  <span className="syntax-key">"role"</span>: <span className="syntax-string">"Full Stack Developer"</span>,
                 </div>
                 <div className="pl-4">
-                  <span className="text-[#8be9fd]">"education"</span>: <span className="text-[#f1fa8c]">"B.Tech IT (3rd Year)"</span>,
+                  <span className="syntax-key">"education"</span>: <span className="syntax-string">"B.Tech IT (3rd Year)"</span>,
                 </div>
                 <div className="pl-4">
-                  <span className="text-[#8be9fd]">"solvedProblems"</span>: <span className="text-[#bd93f9]">1000</span>,
+                  <span className="syntax-key">"solvedProblems"</span>: <span className="syntax-number">1000</span>,
                 </div>
                 <div className="pl-4">
-                  <span className="text-[#8be9fd]">"interests"</span>: <span className="text-[#ff79c6]">{`[`}</span>
-                  <span className="text-[#f1fa8c]">"Coding"</span>, <span className="text-[#f1fa8c]">"Anime"</span>, <span className="text-[#f1fa8c]">"Gaming"</span>
-                  <span className="text-[#ff79c6]">{`]`}</span>
+                  <span className="syntax-key">"interests"</span>: <span className="syntax-punctuation">{`[`}</span>
+                  <span className="syntax-string">"Coding"</span>, <span className="syntax-string">"Anime"</span>, <span className="syntax-string">"Gaming"</span>
+                  <span className="syntax-punctuation">{`]`}</span>
                 </div>
                 <div>
-                  <span className="text-[#ff79c6]">{`}`}</span>
+                  <span className="syntax-punctuation">{`}`}</span>
                 </div>
               </div>
             </div>
