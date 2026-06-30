@@ -22,7 +22,6 @@ const getSkillInfo = (name) => {
     "Tensorflow": { icon: "fa-solid fa-brain", color: "#FF6F00" },
     "Keras": { icon: "fa-solid fa-gears", color: "#D00000" },
     "OpenCV": { icon: "fa-solid fa-eye", color: "#5C3EE8" },
-    "Framer Motion": { icon: "fa-solid fa-wand-magic-sparkles", color: "#F024B6" },
 
     // Infrastructure & Tools
     "MySQL": { icon: "fa-solid fa-database", color: "#4479A1" },
@@ -67,7 +66,7 @@ const SkillBadge = ({ name, icon, brandColor }) => {
   );
 };
 
-const TimelineItem = ({ title, subtitle, date, description, extra, icon, delay }) => {
+const TimelineItem = ({ title, subtitle, date, extra, icon, delay }) => {
   const [isHovered, setIsHovered] = React.useState(false);
 
   return (
@@ -120,7 +119,7 @@ const TimelineItem = ({ title, subtitle, date, description, extra, icon, delay }
           {title}
         </h3>
         <p className="text-gray-text text-sm font-semibold mt-1 mb-3">{subtitle}</p>
-        <p className="text-gray-text/85 text-sm leading-relaxed font-light mb-4">{description}</p>
+        {/*<p className="text-gray-text/85 text-sm leading-relaxed font-light mb-4">{description}</p>*/}
 
         {extra && (
           <div className="flex items-center gap-2 px-3 py-1.5 bg-[var(--dev-profile-header-bg)] border border-card-border/10 rounded-lg max-w-fit font-mono text-xs">
@@ -256,13 +255,12 @@ const Resume = () => {
           clearInterval(interval);
           setTimeout(() => {
             setIsCompiling(false);
-            window.print();
           }, 200);
           return 100;
         }
         return prev + 10;
       });
-    }, 80);
+    }, 100);
   };
 
   const education = [
@@ -301,7 +299,7 @@ const Resume = () => {
     {
       icon: "fa-solid fa-layer-group",
       title: "Frameworks & Libraries",
-      skills: ["React.js", "Spring Boot", "Tailwind CSS", "Tensorflow", "Keras", "OpenCV", "Framer Motion"]
+      skills: ["React.js", "Spring Boot", "Tailwind CSS", "Tensorflow", "Keras", "OpenCV"]
     },
     {
       icon: "fa-solid fa-server",
@@ -315,7 +313,7 @@ const Resume = () => {
       icon: "fa-solid fa-trophy",
       title: "Competitive Programming",
       date: "Ongoing",
-      description: "Actively solving complex algorithmic challenges. Successfully solved over 1000+ problems on Leetcode, ranking in the top percentiles.",
+      description: "Actively solving complex algorithmic challenges. Successfully solved over 1100+ problems on Leetcode.",
       command: "leetcode --user kowshikb --solved",
       outputLines: [
         { key: "Problems Solved", value: "1000+" },
@@ -389,11 +387,11 @@ const Resume = () => {
           </div>
           <div className="flex flex-col gap-1">
             <span className="text-accent-secondary font-bold">DEPT_SPECIALIZATION</span>
-            <span className="text-bright-text font-semibold">Information Tech</span>
+            <span className="text-bright-text font-semibold">Information Technology</span>
           </div>
           <div className="flex flex-col gap-1">
             <span className="text-accent-secondary font-bold">CURRENT_FOCUS</span>
-            <span className="text-bright-text font-semibold">CP & Full Stack Development</span>
+            <span className="text-bright-text font-semibold">ServiceNow AI Platform</span>
           </div>
           <div className="flex flex-col gap-1">
             <span className="text-accent-secondary font-bold">COMPILER_STATUS</span>
