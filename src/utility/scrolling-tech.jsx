@@ -52,8 +52,7 @@ const TechStack = ({ project }) => {
       {/* Left Arrow - Conditionally Rendered and Hidden by default */}
       <button
         onClick={() => scroll('left')}
-        /* Removed backdrop-blur-sm for GPU performance */
-        className={`absolute left-0 z-10 p-1.5 bg-[var(--arrow-bg)] hover:bg-[var(--arrow-hover-bg)] text-[var(--secondary-text)] rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 ${!canScrollLeft && 'pointer-events-none !opacity-0'}`}
+        className={`absolute left-0 z-10 p-1.5 bg-[var(--arrow-bg)] backdrop-blur-sm border border-[var(--card-border)] hover:bg-[var(--arrow-hover-bg)] text-[var(--secondary-text)] rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 ${!canScrollLeft && 'pointer-events-none !opacity-0'}`}
         aria-label="Scroll left"
       >
         <svg
@@ -91,8 +90,7 @@ const TechStack = ({ project }) => {
       {/* Right Arrow - Conditionally Rendered and Hidden by default */}
       <button
         onClick={() => scroll('right')}
-        /* Removed backdrop-blur-sm for GPU performance */
-        className={`absolute right-0 z-10 p-1.5 bg-[var(--arrow-bg)] hover:bg-[var(--arrow-hover-bg)] text-[var(--secondary-text)] rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 ${!canScrollRight && 'pointer-events-none !opacity-0'}`}
+        className={`absolute right-0 z-10 p-1.5 bg-[var(--arrow-bg)] backdrop-blur-sm border border-[var(--card-border)] hover:bg-[var(--arrow-hover-bg)] text-[var(--secondary-text)] rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 ${!canScrollRight && 'pointer-events-none !opacity-0'}`}
         aria-label="Scroll right"
       >
         <svg

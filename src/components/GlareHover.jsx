@@ -9,10 +9,8 @@ const GlareHover = ({
   children,
   glareColor = '#ffffff',
   glareOpacity = 0.5,
-  glareAngle = -45,
   glareSize = 250,
   transitionDuration = 650,
-  playOnce = false,
   className = '',
   style = {}
 }) => {
@@ -35,7 +33,16 @@ const GlareHover = ({
   const animateIn = () => {
     const el = overlayRef.current;
     if (!el) return;
-    el.style.opacity = glareOpacity;
+    el.style.opacity = glareOpacity.toString();
+  };
+
+  const handleMouseMove = (e) => {
+    const el = overlayRef.current;
+    if (!el) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    el.style.background = `radial-gradient(circle ${glareSize}px at ${x}px ${y}px, ${rgba}, transparent 100%)`;
   };
 
   const animateOut = () => {
@@ -47,17 +54,11 @@ const GlareHover = ({
   const overlayStyle = {
     position: 'absolute',
     inset: 0,
-    background: `linear-gradient(${glareAngle}deg,
-        hsla(0,0%,0%,0) 0%,
-        ${rgba} 50%,
-        hsla(0,0%,0%,0) 100%)`,
-    backgroundSize: '100% 100%',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
+    background: `radial-gradient(circle ${glareSize}px at 50% 50%, ${rgba}, transparent 100%)`,
     pointerEvents: 'none',
     opacity: 0,
     transition: `opacity ${transitionDuration}ms ease`,
-    willChange: 'opacity'
+    willChange: 'background, opacity'
   };
 
   return (
@@ -72,6 +73,7 @@ const GlareHover = ({
         ...style
       }}
       onMouseEnter={animateIn}
+      onMouseMove={handleMouseMove}
       onMouseLeave={animateOut}>
       <div ref={overlayRef} style={overlayStyle} />
       {children}

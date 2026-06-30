@@ -1,12 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { Moon, Sun } from "lucide-react"
-import { flushSync } from "react-dom"
 
 import { cn } from "@/lib/utils"
 
 export const AnimatedThemeToggler = ({
   className,
-  duration = 500,
   ...props
 }) => {
   const [isLight, setIsLight] = useState(false)
@@ -41,7 +39,7 @@ export const AnimatedThemeToggler = ({
     <button
       ref={buttonRef}
       onClick={toggleTheme}
-      className={cn("fixed top-3 right-3 z-50 p-3 rounded-full glass-card hover:scale-110 transition-all duration-300", className)}
+      className={cn("fixed top-3 right-3 z-50 p-3 rounded-full glass-level-3 hover:scale-110 transition-all duration-300", className)}
       {...props}>
       {isLight ? <Moon className="w-6 h-6 text-[#1e1b4b]" /> : <Sun className="w-6 h-6 text-yellow-400" />}
       <span className="sr-only">Toggle theme</span>

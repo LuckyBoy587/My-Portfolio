@@ -1,9 +1,5 @@
-import { useState, useCallback, useEffect, useRef } from 'react';
-import { motion, useMotionValue, useAnimationFrame, useTransform } from 'motion/react';
-
 const ShinyText = ({
   text,
-  disabled = false,
   className = '',
   color = '#b5b5b5',
 }) => {

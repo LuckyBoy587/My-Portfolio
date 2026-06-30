@@ -70,22 +70,57 @@ h6,
 }
 
 /* Glassmorphism card styling */
-/* Performance-optimized glass-card: Removed backdrop-filter (blur) to save GPU */
-.glass-card {
-    background: var(--card-bg);
-    /* Use slightly higher opacity background defined in theme */
-    border: 1px solid var(--card-border);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    /* Reduced shadow size for performance */
-    /* Use transitions instead of filter animations */
-    transition: transform 0.3s ease, background 0.3s ease;
+.glass-card, .glass-level-1 {
+    background: var(--glass-bg-1);
+    backdrop-filter: var(--backdrop-blur-glass-1);
+    -webkit-backdrop-filter: var(--backdrop-blur-glass-1);
+    border: 1px solid var(--glass-border-1);
+    box-shadow: var(--shadow-glass);
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    will-change: transform, opacity;
 }
 
-/* Solid card without blur for performance */
+.glass-level-2 {
+    background: var(--glass-bg-2);
+    backdrop-filter: var(--backdrop-blur-glass-2);
+    -webkit-backdrop-filter: var(--backdrop-blur-glass-2);
+    border: 1px solid var(--glass-border-2);
+    box-shadow: var(--shadow-glass);
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+.glass-level-3 {
+    background: var(--glass-bg-3);
+    backdrop-filter: var(--backdrop-blur-glass-3);
+    -webkit-backdrop-filter: var(--backdrop-blur-glass-3);
+    border: 1px solid var(--glass-border-3);
+    box-shadow: var(--shadow-glass-deep);
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+/* Solid card without blur */
 .solid-card {
-    background: var(--card-bg);
+    background: var(--primary-bg);
     border: 1px solid var(--card-border);
     box-shadow: 0 8px 32px var(--secondary-bg);
+}
+
+/* Accessibility: prefers-reduced-transparency */
+@media (prefers-reduced-transparency: reduce) {
+    .glass-card, .glass-level-1, .glass-level-2, .glass-level-3 {
+        background: var(--primary-bg) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-color: var(--card-border) !important;
+    }
 }
 
 /* Top mask to make content appear translucent as it scrolls above the navbar */
@@ -250,7 +285,6 @@ h6,
     --primary-bg: #12121a;
     --secondary-bg: #1a1a28;
     --card-bg: rgba(20, 20, 35, 0.9);
-    /* Increased opacity for visibility without blur */
     --card-border: rgba(138, 92, 246, 0.15);
     --primary-text: #f0f0f5;
     --secondary-text: #a855f7;
@@ -262,6 +296,30 @@ h6,
     --profile-pic-gradient: linear-gradient(135deg, rgba(30, 30, 50, 1) 0%, rgba(10, 10, 18, 1) 100%);
     --arrow-bg: rgba(168, 85, 247, 0.1);
     --arrow-hover-bg: rgba(168, 85, 247, 0.3);
+
+    /* Glassmorphism Design System Tokens */
+    --blur-glass-1: 8px;
+    --blur-glass-2: 16px;
+    --blur-glass-3: 24px;
+
+    --backdrop-blur-glass-1: blur(var(--blur-glass-1));
+    --backdrop-blur-glass-2: blur(var(--blur-glass-2));
+    --backdrop-blur-glass-3: blur(var(--blur-glass-3));
+
+    /* Glass Level 1 - Subtle */
+    --glass-bg-1: rgba(20, 20, 35, 0.45);
+    --glass-border-1: rgba(255, 255, 255, 0.08);
+
+    /* Glass Level 2 - Medium */
+    --glass-bg-2: rgba(14, 14, 25, 0.65);
+    --glass-border-2: rgba(255, 255, 255, 0.12);
+
+    /* Glass Level 3 - Premium */
+    --glass-bg-3: rgba(10, 10, 20, 0.85);
+    --glass-border-3: rgba(255, 255, 255, 0.18);
+    
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    --shadow-glass-deep: 0 16px 48px 0 rgba(0, 0, 0, 0.35);
 
     /* Font variables */
     --heading-font: 'JetBrains Mono', monospace;
@@ -308,7 +366,6 @@ h6,
     --primary-bg: #ffffff;
     --secondary-bg: #ede9fe;
     --card-bg: rgba(255, 255, 255, 0.9);
-    /* Increased opacity for visibility without blur */
     --card-border: rgba(168, 85, 247, 0.3);
     --primary-text: #1e1b4b;
     --secondary-text: #7c3aed;
@@ -320,6 +377,16 @@ h6,
     --profile-pic-gradient: linear-gradient(135deg, #ffffff 0%, #ebe2ff 100%);
     --arrow-bg: rgba(168, 85, 247, 0.1);
     --arrow-hover-bg: rgba(168, 85, 247, 0.2);
+
+    /* Light Mode Glass Overrides */
+    --glass-bg-1: rgba(255, 255, 255, 0.5);
+    --glass-border-1: rgba(168, 85, 247, 0.15);
+
+    --glass-bg-2: rgba(255, 255, 255, 0.7);
+    --glass-border-2: rgba(168, 85, 247, 0.2);
+
+    --glass-bg-3: rgba(255, 255, 255, 0.85);
+    --glass-border-3: rgba(168, 85, 247, 0.25);
 }
 
 @layer base {
